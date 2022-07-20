@@ -10,16 +10,12 @@ import modelo.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class DAOEmpleado implements IEmpleado{     
 
-    
     //Constructor vacio
     public DAOEmpleado() {        
     }
 
-    
     @Override
     public void agrAdministrativo(Administrativo a) {
         try{
@@ -78,7 +74,7 @@ public class DAOEmpleado implements IEmpleado{
         try{
             Connection cn=MySQLConexion.getConexion();
             String sql="select codemp,nomEmp,apeEmp,NpuestoEmp,tEmp,fecContEmp,sbaseEmp\n" +
-"from empleado";
+                        "from empleado";
             PreparedStatement st=cn.prepareStatement(sql);
             ResultSet rs=st.executeQuery();//obtener todo el listado
             while(rs.next()){            
@@ -104,8 +100,8 @@ public class DAOEmpleado implements IEmpleado{
     public void borraAdm(Empleado a) {
                 try{
         String sql="DELETE empleado,administrativo FROM empleado\n" +
-"INNER JOIN administrativo\n" +
-"WHERE empleado.codEmp=administrativo.Empleado_codEmp and empleado.codEmp = ?";
+        "INNER JOIN administrativo\n" +
+        "WHERE empleado.codEmp=administrativo.Empleado_codEmp and empleado.codEmp = ?";
         Connection cn=MySQLConexion.getConexion();
         PreparedStatement st=cn.prepareStatement(sql);
         st.setString(1,a.getCode());        
@@ -227,8 +223,8 @@ public class DAOEmpleado implements IEmpleado{
     try{
         Connection cn=MySQLConexion.getConexion();
         String sql="select codemp,nomEmp,apeEmp,NpuestoEmp,tEmp,fecContEmp,sbaseEmp\n" +
-"from empleado\n" +
-"where apeEmp like ?";
+        "from empleado\n" +
+        "where apeEmp like ?";
         PreparedStatement st=cn.prepareStatement(sql);
         st.setString(1,ape+"%");//relaciona el signo de interrogacion con el id
         ResultSet rs=st.executeQuery();//obtener todo el listado
@@ -375,8 +371,8 @@ public class DAOEmpleado implements IEmpleado{
     try{
         Connection cn=MySQLConexion.getConexion();
         String sql="select codemp,nomEmp,apeEmp,NpuestoEmp,tEmp,fecContEmp,sbaseEmp\n" +
-"from empleado\n" +
-"WHERE codEmp=?";
+        "from empleado\n" +
+        "WHERE codEmp=?";
         PreparedStatement st=cn.prepareStatement(sql);
         st.setString(1,cod);       
         ResultSet rs=st.executeQuery();//obtener todo el listado
