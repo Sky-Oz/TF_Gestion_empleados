@@ -1223,10 +1223,14 @@ DAOSueldo sue = new DAOSueldo();
             Connection cn=MySQLConexion.getConexion();
             
             JasperReport reporte = null;
-            String path="C:\\Users\\diego\\Desktop\\Ciclo 2022-I\\Integrador\\TF_Gestion_empleados\\src\\reportes\\reportEmpleados.jasper";
+            String path="src\\reportes\\reportEmpleados.jasper";
             
             reporte = (JasperReport)JRLoader.loadObjectFromFile(path);
+            
+            //Crear nuestro informe con JasperReport
             JasperPrint jprint = JasperFillManager.fillReport(path, null, cn);
+            
+            //Visualizar el archivo con JasperViewer
             JasperViewer view= new JasperViewer(jprint,false);
             
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
